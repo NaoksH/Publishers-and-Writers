@@ -408,7 +408,7 @@
 
   <div class="toolbar">
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="記事タイトルで絞り込む">
+      <input type="text" id="searchInput" placeholder="記事タイトルや出版社・作家名で絞り込む">
     </div>
     <div class="view-toggle">
       <button class="active" data-view="timeline">更新順</button>
@@ -543,8 +543,9 @@ async function fetchFeedItems(url){
       const link = item.querySelector('link')?.textContent?.trim();
       const pubDate = item.querySelector('pubDate')?.textContent;
       const desc = item.querySelector('description')?.textContent;
+      const author = item.querySelector('creator')?.textContent?.trim();
       const date = toIsoDate(pubDate) || toIsoDate(new Date());
-      if (title) items.push({ title, date, link, excerpt: stripHtml(desc).slice(0,60) });
+      if (title) items.push({ title, date, link, author, excerpt: stripHtml(desc).slice(0,60) });
     });
   } else if (atomEntries.length){
     atomEntries.forEach(item => {
@@ -553,8 +554,9 @@ async function fetchFeedItems(url){
       const link = linkEl?.getAttribute('href') || linkEl?.textContent?.trim();
       const updated = item.querySelector('updated')?.textContent || item.querySelector('published')?.textContent;
       const summary = item.querySelector('summary')?.textContent || item.querySelector('content')?.textContent;
+      const author = item.querySelector('author name')?.textContent?.trim() || item.querySelector('creator')?.textContent?.trim();
       const date = toIsoDate(updated) || toIsoDate(new Date());
-      if (title) items.push({ title, date, link, excerpt: stripHtml(summary).slice(0,60) });
+      if (title) items.push({ title, date, link, author, excerpt: stripHtml(summary).slice(0,60) });
     });
   }
   return items.slice(0, 15);
@@ -684,7 +686,12 @@ function renderSiteList(){
 
 function matchesSearch(entry, q){
   if (!q) return true;
-  return entry.title.toLowerCase().includes(q) || entry.excerpt.toLowerCase().includes(q);
+  const s = sourceMap[entry.src];
+  return entry.title.toLowerCase().includes(q)
+      || entry.excerpt.toLowerCase().includes(q)
+      || (entry.author || '').toLowerCase().includes(q)
+      || s.publisher.toLowerCase().includes(q)
+      || s.magazine.toLowerCase().includes(q);
 }
 
 function renderTimeline(filtered){
@@ -716,6 +723,7 @@ function renderTimeline(filtered){
         <div class="body">
           <div class="meta">
             <span class="pub">${s.publisher}</span>・${s.magazine}
+            ${entry.author ? `・${entry.author}` : ''}
             ${i === 0 ? '<span class="badge">NEW</span>' : ''}
             ${entry.isLive ? '<span class="live-tag">実データ</span>' : '<span class="sample-tag">サンプル</span>'}
           </div>
@@ -752,6 +760,7 @@ function renderBySource(filtered){
         <div class="body">
           <div class="meta">
             ${entry.date.replace(/-/g,'/')}
+            ${entry.author ? `・${entry.author}` : ''}
             ${entry.isLive ? '<span class="live-tag">実データ</span>' : '<span class="sample-tag">サンプル</span>'}
           </div>
           <a class="title" href="${entry.link || s.homepage}" target="_blank" rel="noopener noreferrer">${entry.title}</a>
