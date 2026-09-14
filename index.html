@@ -456,15 +456,15 @@
 
 <script>
 const sources = [
-  { id: 'shueisha',      publisher: '集英社',     magazine: '青春と読書', color: 'var(--p-shueisha)' },
-  { id: 'bungeishunju',  publisher: '文藝春秋',   magazine: '本の話',     color: 'var(--p-bungeishunju)' },
-  { id: 'shinchosha1',   publisher: '新潮社',     magazine: '考える人',   color: 'var(--p-shinchosha)' },
-  { id: 'shinchosha2',   publisher: '新潮社',     magazine: 'BookBang',   color: 'var(--p-shinchosha)' },
-  { id: 'kodansha',      publisher: '講談社',     magazine: 'tree',       color: 'var(--p-kodansha)' },
-  { id: 'kadokawa',      publisher: 'KADOKAWA',  magazine: 'カドブン',   color: 'var(--p-kadokawa)' },
-  { id: 'shogakukan',    publisher: '小学館',     magazine: '小説丸',     color: 'var(--p-shogakukan)' },
-  { id: 'chikuma',       publisher: '筑摩書房',   magazine: 'webちくま',  color: 'var(--p-chikuma)' },
-  { id: 'kawade',        publisher: '河出書房新社', magazine: 'Web河出', color: 'var(--p-kawade)' },
+  { id: 'shueisha',      publisher: '集英社',     magazine: '青春と読書', color: 'var(--p-shueisha)', homepage: 'https://seidoku.shueisha.co.jp/' },
+  { id: 'bungeishunju',  publisher: '文藝春秋',   magazine: '本の話',     color: 'var(--p-bungeishunju)', homepage: 'https://books.bunshun.jp/' },
+  { id: 'shinchosha1',   publisher: '新潮社',     magazine: '考える人',   color: 'var(--p-shinchosha)', homepage: 'https://kangaeruhito.jp/' },
+  { id: 'shinchosha2',   publisher: '新潮社',     magazine: 'BookBang',   color: 'var(--p-shinchosha)', homepage: 'https://www.bookbang.jp/' },
+  { id: 'kodansha',      publisher: '講談社',     magazine: 'tree',       color: 'var(--p-kodansha)', homepage: 'https://tree-novel.com/' },
+  { id: 'kadokawa',      publisher: 'KADOKAWA',  magazine: 'カドブン',   color: 'var(--p-kadokawa)', homepage: 'https://kadobun.jp/' },
+  { id: 'shogakukan',    publisher: '小学館',     magazine: '小説丸',     color: 'var(--p-shogakukan)', homepage: 'https://shosetsu-maru.com/' },
+  { id: 'chikuma',       publisher: '筑摩書房',   magazine: 'webちくま',  color: 'var(--p-chikuma)', homepage: 'https://www.webchikuma.com/' },
+  { id: 'kawade',        publisher: '河出書房新社', magazine: 'Web河出', color: 'var(--p-kawade)', homepage: 'https://web.kawade.co.jp/' },
 ];
 
 // サンプルデータ（モック。情報源が未設定の媒体はこちらを表示し続ける）
@@ -540,18 +540,21 @@ async function fetchFeedItems(url){
   if (rssItems.length){
     rssItems.forEach(item => {
       const title = item.querySelector('title')?.textContent?.trim();
+      const link = item.querySelector('link')?.textContent?.trim();
       const pubDate = item.querySelector('pubDate')?.textContent;
       const desc = item.querySelector('description')?.textContent;
       const date = toIsoDate(pubDate) || toIsoDate(new Date());
-      if (title) items.push({ title, date, excerpt: stripHtml(desc).slice(0,60) });
+      if (title) items.push({ title, date, link, excerpt: stripHtml(desc).slice(0,60) });
     });
   } else if (atomEntries.length){
     atomEntries.forEach(item => {
       const title = item.querySelector('title')?.textContent?.trim();
+      const linkEl = item.querySelector('link');
+      const link = linkEl?.getAttribute('href') || linkEl?.textContent?.trim();
       const updated = item.querySelector('updated')?.textContent || item.querySelector('published')?.textContent;
       const summary = item.querySelector('summary')?.textContent || item.querySelector('content')?.textContent;
       const date = toIsoDate(updated) || toIsoDate(new Date());
-      if (title) items.push({ title, date, excerpt: stripHtml(summary).slice(0,60) });
+      if (title) items.push({ title, date, link, excerpt: stripHtml(summary).slice(0,60) });
     });
   }
   return items.slice(0, 15);
@@ -716,7 +719,7 @@ function renderTimeline(filtered){
             ${i === 0 ? '<span class="badge">NEW</span>' : ''}
             ${entry.isLive ? '<span class="live-tag">実データ</span>' : '<span class="sample-tag">サンプル</span>'}
           </div>
-          <a class="title" href="#">${entry.title}</a>
+          <a class="title" href="${entry.link || s.homepage}" target="_blank" rel="noopener noreferrer">${entry.title}</a>
           ${entry.excerpt ? `<div class="excerpt">${entry.excerpt}</div>` : ''}
         </div>
       `;
@@ -751,7 +754,7 @@ function renderBySource(filtered){
             ${entry.date.replace(/-/g,'/')}
             ${entry.isLive ? '<span class="live-tag">実データ</span>' : '<span class="sample-tag">サンプル</span>'}
           </div>
-          <a class="title" href="#">${entry.title}</a>
+          <a class="title" href="${entry.link || s.homepage}" target="_blank" rel="noopener noreferrer">${entry.title}</a>
           ${entry.excerpt ? `<div class="excerpt">${entry.excerpt}</div>` : ''}
         </div>
       `;
