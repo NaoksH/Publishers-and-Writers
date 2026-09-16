@@ -532,7 +532,7 @@
   </div>
 
   <div class="drawer" id="navDrawer" data-open="false">
-    <p class="lede">集英社・文藝春秋・新潮社・講談社・KADOKAWAなど、各出版社が運営する文芸PRサイトの更新をひとつにまとめて読むための個人用ポータルです。本の話・考える人・Web河出・webちくまの4媒体は、開いた時点で実際の最新記事が表示されます。</p>
+    <p class="lede">集英社・文藝春秋・新潮社・講談社・KADOKAWA・小学館・河出書房新社・筑摩書房、全9媒体の文芸PRサイトの更新をひとつにまとめて読むための個人用ポータルです。</p>
 
     <div class="drawer-controls">
       <div class="view-toggle">
@@ -558,7 +558,7 @@
 
     <div class="note">
       <strong>このサイトについて</strong>
-      本の話・考える人・Web河出・webちくまの4媒体は、実際のRSSから取得した最新記事を表示しています。それ以外の媒体は、右上の「情報源を設定」からRSS URLを登録すると同様に実データへ切り替わります（未登録の間はサンプル表示です）。RSSを持たないサイトは、RSS.appなどでページをRSS化してからURLを登録してください。データはブラウザ内保存のみで、外部サーバーには送信されません。
+      全9媒体とも、実際のRSSから取得した最新記事を表示しています。「情報源を設定」から各URLを差し替えることもできます（差し替えた内容はこの端末のブラウザ内にのみ保存され、外部サーバーには送信されません）。
     </div>
   </aside>
 </div>
@@ -624,8 +624,13 @@ const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
 const DEFAULT_FEED_URLS = {
   bungeishunju: 'https://books.bunshun.jp/list/feed/rss',   // 本の話（文藝春秋）
   shinchosha1:  'https://kangaeruhito.jp/feed',              // 考える人（新潮社）
+  shinchosha2:  'https://rss.app/feeds/7yFevhcjup6OM7Ox.xml', // BookBang（新潮社、RSS.app変換）
+  kodansha:     'https://rss.app/feeds/wu43uRxFwQcuzTYY.xml', // tree（講談社、RSS.app変換）
+  kadokawa:     'https://rss.app/feeds/2tILI9TaTzqaYxFa.xml', // カドブン（KADOKAWA、RSS.app変換）
+  shogakukan:   'https://rss.app/feeds/3zIEVCxjqikLrtE8.xml', // 小説丸（小学館、RSS.app変換）
   kawade:       'https://web.kawade.co.jp/feed/',            // Web河出（河出書房新社）
   chikuma:      'https://note.com/webchikuma/rss',           // webちくま（筑摩書房、note基盤）
+  shueisha:     'https://rss.app/feeds/6FnANkNx5OEBKEv0.xml', // 青春と読書（集英社、RSS.app変換）
 };
 
 function loadFeedUrls(){
