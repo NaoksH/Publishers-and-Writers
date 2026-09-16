@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>All Publishers News Fit to Read. ― 出版社PR誌 更新ポータル（Ver.0.1）</title>
+<title>All Publishers News Fit to Read. ― 出版社PR誌 更新ポータル（Ver.0.2）</title>
 
 <meta name="description" content="集英社・文藝春秋・新潮社・講談社・KADOKAWAなど、各出版社が運営する文芸PRサイトの更新をひとつにまとめて読む個人用ポータルです。">
 
@@ -513,7 +513,7 @@
 <body>
 
 <header>
-  <div class="kicker">PERSONAL PORTAL / VER.0.1</div>
+  <div class="kicker">PERSONAL PORTAL / VER.0.2</div>
   <h1><span></span>All Publishers News Fit to Read.</h1>
 
   <div class="dateline">
@@ -570,6 +570,7 @@
     <div id="feedFields"></div>
     <div class="modal-actions">
       <button id="saveFeedsBtn">保存して取得</button>
+      <button id="resetFeedsBtn" class="ghost">デフォルトに戻す</button>
       <button id="closeModalBtn" class="ghost">閉じる</button>
     </div>
     <div class="status-line" id="fetchStatus"></div>
@@ -577,7 +578,7 @@
 </div>
 
 <footer>
-  本サイトは個人が趣味で運営する非公式のリンク集です。All Publishers News Fit to Read.（Ver.0.1） ― 掲載されている出版社名・雑誌名の著作権・商標権は各権利者に帰属し、各社とは無関係です。記事本文は掲載しておらず、詳細は各リンク先の公式サイトでご確認ください。表示内容の正確性は保証しません。
+  本サイトは個人が趣味で運営する非公式のリンク集です。All Publishers News Fit to Read.（Ver.0.2） ― 掲載されている出版社名・雑誌名の著作権・商標権は各権利者に帰属し、各社とは無関係です。記事本文は掲載しておらず、詳細は各リンク先の公式サイトでご確認ください。表示内容の正確性は保証しません。
 </footer>
 
 <script>
@@ -791,6 +792,12 @@ document.getElementById('saveFeedsBtn').addEventListener('click', () => {
   feedUrls = map;
   saveFeedUrls(map);
   document.getElementById('modalOverlay').dataset.hidden = 'true';
+  refreshLiveData();
+});
+document.getElementById('resetFeedsBtn').addEventListener('click', () => {
+  localStorage.removeItem(FEED_STORAGE_KEY);
+  feedUrls = { ...DEFAULT_FEED_URLS };
+  renderFeedFields();
   refreshLiveData();
 });
 
