@@ -619,7 +619,14 @@ let currentView = 'timeline';
 
 // ---------- 実データ取得まわり ----------
 const FEED_STORAGE_KEY = 'bungeiFeedUrls';
-const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+// 無料のCORS中継サービスは単体だと時々まとめて障害が起きるため、
+// 複数を順番に試し、どれかが生きていれば取得できるようにする。
+const CORS_PROXIES = [
+  (url) => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url),
+  (url) => 'https://corsproxy.io/?url=' + encodeURIComponent(url),
+  (url) => 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(url),
+  (url) => 'https://thingproxy.freeboard.io/fetch/' + url,
+];
 
 // 動作確認済みの初期値（訪問者が誰であっても、これらは最初から実データで表示される）
 const DEFAULT_FEED_URLS = {
@@ -659,10 +666,28 @@ function toIsoDate(dateLike){
   return d.toISOString().slice(0,10);
 }
 
+async function fetchViaProxies(url){
+  let lastErr = null;
+  for (const buildProxyUrl of CORS_PROXIES){
+    try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 8000);
+      const res = await fetch(buildProxyUrl(url), { signal: controller.signal });
+      clearTimeout(timer);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      if (!text || !text.trim()) throw new Error('empty response');
+      return text;
+    } catch (err){
+      lastErr = err;
+      // このプロキシがダメでも次を試す
+    }
+  }
+  throw lastErr || new Error('all proxies failed');
+}
+
 async function fetchFeedItems(url){
-  const res = await fetch(CORS_PROXY + encodeURIComponent(url));
-  if (!res.ok) throw new Error('HTTP ' + res.status);
-  const text = await res.text();
+  const text = await fetchViaProxies(url);
   const xml = new DOMParser().parseFromString(text, 'text/xml');
   if (xml.querySelector('parsererror')) throw new Error('XML parse error');
 
