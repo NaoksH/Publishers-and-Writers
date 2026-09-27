@@ -720,6 +720,26 @@ async function fetchFeedItems(url){
   return items.slice(0, 15);
 }
 
+// ---------- サーバー側（GitHub Actions）が取得済みの feeds.json ----------
+// api.allorigins.win 等の無料CORS中継サービスは不安定・機能制限されがちなため、
+// 既定の情報源はブラウザから直接プロキシ経由で取りにいかず、リポジトリ内に
+// 定期的に生成される feeds.json（サーバー側で取得済みのデータ）を読みにいく。
+// 「情報源を設定」で独自URLに変更した場合だけ、そのURLを従来どおりブラウザから
+// 中継サービス経由で取得する（feeds.json には無いデータのため）。
+const FEEDS_JSON_URL = 'feeds.json';
+let feedsJsonData = null; // { generatedAt, feeds: {id:[...]}, errors: {id:msg} }
+
+async function loadFeedsJson(){
+  try {
+    const res = await fetch(FEEDS_JSON_URL + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    feedsJsonData = await res.json();
+  } catch (err){
+    console.warn('feeds.json fetch failed (まだ生成されていないか、取得に失敗しました)', err);
+    feedsJsonData = null;
+  }
+}
+
 function computeEntries(){
   const combined = [];
   sources.forEach(s => {
@@ -733,14 +753,15 @@ function computeEntries(){
 }
 
 function updateIssueLabel(){
-  const now = new Date();
   const label = document.getElementById('issueLabel');
   const fetchedAt = document.getElementById('fetchedAtLabel');
+  const base = (feedsJsonData && feedsJsonData.generatedAt) ? new Date(feedsJsonData.generatedAt) : new Date();
   if (label){
-    label.textContent = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日号`;
+    label.textContent = `${base.getFullYear()}年${base.getMonth()+1}月${base.getDate()}日号`;
   }
   if (fetchedAt){
-    fetchedAt.textContent = `最終取得 ${now.toLocaleTimeString('ja-JP', {hour:'2-digit', minute:'2-digit'})}`;
+    const stamp = base.toLocaleString('ja-JP', {month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'});
+    fetchedAt.textContent = feedsJsonData ? `最終取得 ${stamp}` : `最終取得 ${stamp}（自動取得は準備中）`;
   }
 }
 
@@ -753,20 +774,37 @@ async function refreshLiveData(){
     updateIssueLabel();
     return;
   }
-  if (status) status.textContent = `取得中… (0/${ids.length})`;
-  let done = 0, okCount = 0;
-  for (const id of ids){
-    try{
-      const items = await fetchFeedItems(feedUrls[id]);
-      if (items.length) liveEntriesBySource[id] = items;
-      okCount++;
-    }catch(err){
-      console.warn('feed fetch failed for', id, err);
-    }
-    done++;
-    if (status) status.textContent = `取得中… (${done}/${ids.length})`;
+
+  if (status) status.textContent = '最新データを確認中…';
+  await loadFeedsJson();
+
+  // まず feeds.json（サーバー側で定期取得済みのデータ）を反映する
+  if (feedsJsonData && feedsJsonData.feeds){
+    ids.forEach(id => {
+      const items = feedsJsonData.feeds[id];
+      if (items && items.length) liveEntriesBySource[id] = items;
+    });
   }
-  if (status) status.textContent = `${okCount}件のサイトから最新データを取得しました（${new Date().toLocaleTimeString('ja-JP')}時点）。`;
+
+  // 「情報源を設定」でデフォルトと異なるURLに変更されているものだけ、
+  // 従来どおりブラウザから中継サービス経由で個別取得する
+  const customIds = ids.filter(id => feedUrls[id] !== DEFAULT_FEED_URLS[id]);
+  if (customIds.length){
+    let done = 0;
+    for (const id of customIds){
+      if (status) status.textContent = `個別設定の情報源を取得中… (${done}/${customIds.length})`;
+      try{
+        const items = await fetchFeedItems(feedUrls[id]);
+        if (items.length) liveEntriesBySource[id] = items;
+      }catch(err){
+        console.warn('feed fetch failed for', id, err);
+      }
+      done++;
+    }
+  }
+
+  const okCount = ids.filter(id => liveEntriesBySource[id] && liveEntriesBySource[id].length).length;
+  if (status) status.textContent = `${okCount}件のサイトから最新データを表示しています。`;
   computeEntries();
   renderSiteList();
   renderAll();
