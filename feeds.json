@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T07:50:55.705Z",
+  "generatedAt": "2026-10-15T13:47:57.858Z",
   "feeds": {
     "bungeishunju": [
       {
@@ -258,6 +258,13 @@
     ],
     "chikuma": [
       {
+        "title": "スイカの歌",
+        "date": "2026-10-15",
+        "link": "https://www.webchikuma.com/n/nf2fa37d89004",
+        "author": null,
+        "excerpt": "井奥陽子さんの『青のモスクワ ウクライナ侵攻下の日々』から、一章分を公開します。2022年の8月、モスクワでのくらしが始"
+      },
+      {
         "title": "第三回　ぽろりとマイナス30の",
         "date": "2026-10-09",
         "link": "https://www.webchikuma.com/n/ne4f9dc485968",
@@ -354,13 +361,6 @@
         "link": "https://www.webchikuma.com/n/n8f9535d7d955",
         "author": null,
         "excerpt": "✑兼本 浩祐兼本 浩祐『「わたし」が死ぬということの哲学』より、「はじめに」を公開いたします。\n続きをみる"
-      },
-      {
-        "title": "ちくまプリマー新書『ダーウィンは進化をどう考えたのか』試し読み",
-        "date": "2026-09-16",
-        "link": "https://www.webchikuma.com/n/nf0bc62737aef",
-        "author": null,
-        "excerpt": "✑長谷川 眞理子長谷川 眞理子『ダーウィンは進化をどう考えたのか』（ちくまプリマー新書2026年5月の新刊）より「はじめ"
       }
     ],
     "shueisha": []
