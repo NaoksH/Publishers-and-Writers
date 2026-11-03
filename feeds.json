@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T21:06:25.517Z",
+  "generatedAt": "2026-11-03T04:38:42.414Z",
   "feeds": {
     "bungeishunju": [
       {
@@ -258,6 +258,13 @@
     ],
     "chikuma": [
       {
+        "title": "近所に好きな中華料理店があるという奇跡",
+        "date": "2026-10-31",
+        "link": "https://www.webchikuma.com/n/nad71c841d6d7",
+        "author": null,
+        "excerpt": "✑スズキナオライターのスズキナオさんによる、北尾トロ『ルポ　町中華の戦後史』についてのエッセイを公開します。スズキナオさ"
+      },
+      {
         "title": "「また、中東で戦争か」の背景を掘り下げてみる／溝渕正季『中東ではなぜ戦争が終わらないのか』ためし読み",
         "date": "2026-10-30",
         "link": "https://www.webchikuma.com/n/n6f865c216de5",
@@ -354,13 +361,6 @@
         "link": "https://www.webchikuma.com/n/n15e8b14f81c0",
         "author": null,
         "excerpt": "経度と緯度を調べれば地球上の座標が定まり、時計を見れば、今が何時かすぐわかる。経度差から外国の時間も計算できる。便利だが"
-      },
-      {
-        "title": "小説翻訳とは似ても似つかない戯曲翻訳の世界",
-        "date": "2026-10-01",
-        "link": "https://www.webchikuma.com/n/n34d0737506c6",
-        "author": null,
-        "excerpt": "✑北村紗衣戯曲の翻訳というのは小説の翻訳とは似ても似つかない世界である。何しろ戯曲は実際に舞台で上演することを目的に書か"
       }
     ],
     "shueisha": []
