@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T01:10:42.546Z",
+  "generatedAt": "2026-11-05T10:03:57.986Z",
   "feeds": {
     "bungeishunju": [
       {
@@ -186,6 +186,13 @@
     "shogakukan": [],
     "kawade": [
       {
+        "title": "〈主演：松村北斗×堀田真由による映画化決定！〉ひとつの視界を通して育まれる静かな愛の物語『副音声 まだ見ぬ君へ』が河出文庫より11月9日発売",
+        "date": "2026-11-05",
+        "link": "https://web.kawade.co.jp/information/273505/",
+        "author": "kawade_editor",
+        "excerpt": "〈顔も名前も知らない。それでも、君に会いたい。〉映画『まだ見ぬ君へ』（配給：松竹）は2027年4月2日（金）全国公開！ "
+      },
+      {
         "title": "朝吹真理子、８年ぶりの圧倒的傑作長編。著者自ら装丁も手がける。　おふとんのむこうから海がくる。――『ゆめ』冒頭試し読みを無料公開！",
         "date": "2026-11-03",
         "link": "https://web.kawade.co.jp/tameshiyomi/271731/",
@@ -247,16 +254,16 @@
         "link": "https://web.kawade.co.jp/information/268819/",
         "author": "kawade_editor",
         "excerpt": "&#160;   &#160; 役所広司主演 × 宮藤官九郎脚本 × 磯山晶企画 豪華タッグで贈るNetflixシリーズ"
-      },
-      {
-        "title": "河出文庫ベスト・オブ・ベスト2026　開催店",
-        "date": "2026-10-21",
-        "link": "https://web.kawade.co.jp/information/268450/",
-        "author": "kawade_editor",
-        "excerpt": "河出文庫ベスト・オブ・ベスト2026　主要開催店一覧 ※展開点数、実施期間は店舗によって異なります。 ★特設サイトはコチ"
       }
     ],
     "chikuma": [
+      {
+        "title": "「パーフェクト」手前の羽ばたき、地塗りと金箔──レンブラント・ファン・レイン《笑う男》",
+        "date": "2026-11-05",
+        "link": "https://www.webchikuma.com/n/na9826b7d54e7",
+        "author": null,
+        "excerpt": "✑田口かおり何かきらりと光った気がして、画面に目が「ひっかかる」ことがある。イメージの片隅、絵具と絵具の間の高低差に、魚"
+      },
       {
         "title": "あるけれど、ない平和",
         "date": "2026-11-04",
@@ -354,13 +361,6 @@
         "link": "https://www.webchikuma.com/n/n86b5b71f904a",
         "author": null,
         "excerpt": "少子化が止まらない。このままでは、この国に子どもがいなくなる。今の日本で、なぜ子育ては「ぜいたく品」となってしまったのか"
-      },
-      {
-        "title": "世界はトラウマでできている",
-        "date": "2026-10-02",
-        "link": "https://www.webchikuma.com/n/n7f860a8a720e",
-        "author": null,
-        "excerpt": "本書のエッセンスが詰まった「はじめに」を公開します。傷つきをあたりまえに大切にできる社会をめざす、児童精神科医による傷つ"
       }
     ],
     "shueisha": []
