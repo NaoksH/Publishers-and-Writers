@@ -1,7 +1,14 @@
 {
-  "generatedAt": "2026-11-20T01:57:09.819Z",
+  "generatedAt": "2026-11-20T10:44:32.984Z",
   "feeds": {
     "bungeishunju": [
+      {
+        "title": "箱根駅伝本選に向かうドラマ『俺たちの箱根駅伝』に、宮城県出身の菅原大吉さん、千葉雄大さんが登場！　池井戸潤『俺たちの箱根駅伝』",
+        "date": "2026-11-20",
+        "link": "https://books.bunshun.jp/articles/-/11514",
+        "author": null,
+        "excerpt": "TVer総合＆ドラマランキング1位、Hulu国内ドラマランキング1位など、箱根駅伝本選を目前にますます盛り上がりを見せる"
+      },
       {
         "title": "かつての学生ランナーたちが振り返るノンフィクション『リスタート！　箱根駅伝、奇跡の学連選抜』 ほか",
         "date": "2026-11-19",
@@ -99,13 +106,6 @@
         "link": "https://books.bunshun.jp/articles/-/11455",
         "author": null,
         "excerpt": "日本テレビ放送網株式会社と一般社団法人 関東学生陸上競技連盟の監修を受け、文藝春秋より12月7日（月）発売予定の「日本テ"
-      },
-      {
-        "title": "第50回川端康成文学賞受賞の表題作他、二編を収録『近づくと遠ざかる船』 ほか",
-        "date": "2026-11-05",
-        "link": "https://books.bunshun.jp/articles/-/11469",
-        "author": null,
-        "excerpt": "川端康成文学賞受賞短編を収録『近づくと遠ざかる船』（古川真人）　普段であれば大勢の家族や親戚に囲まれているが、ひょんなこ"
       }
     ],
     "shinchosha1": [
@@ -258,6 +258,13 @@
     ],
     "chikuma": [
       {
+        "title": "パーソナルな営みとしての書くこと（書くをひらく12）　✑田村美由紀",
+        "date": "2026-11-20",
+        "link": "https://www.webchikuma.com/n/n95e2e652eae7",
+        "author": null,
+        "excerpt": "技術と関係性続きをみる"
+      },
+      {
         "title": "雑な人間だけが雑な世界に耐えられる",
         "date": "2026-11-13",
         "link": "https://www.webchikuma.com/n/ne85a8072cb48",
@@ -354,13 +361,6 @@
         "link": "https://www.webchikuma.com/n/nf27ab0e1868b",
         "author": null,
         "excerpt": "NOが言えなかった。嫌だと言ったけど「あなたのため」と言われてしまった。そんな日々のモヤモヤ、感じていませんか？　それは"
-      },
-      {
-        "title": "ようこそ、室町サファリパークへ",
-        "date": "2026-10-28",
-        "link": "https://www.webchikuma.com/n/nd73134ec3ffa",
-        "author": null,
-        "excerpt": "大名たちはいかにして、大名になりえたのか。人気のない室町時代を圧倒的なスケールで描いた、１１月刊、桃崎有一郎『室町大名―"
       }
     ],
     "shueisha": []
