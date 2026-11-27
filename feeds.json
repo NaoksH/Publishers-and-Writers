@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T03:22:58.246Z",
+  "generatedAt": "2026-11-27T15:50:59.619Z",
   "feeds": {
     "bungeishunju": [
       {
@@ -186,6 +186,13 @@
     "shogakukan": [],
     "kawade": [
       {
+        "title": "佐野元春×松尾潔、意外な二人に大反響！　評伝『佐野元春 歌い続ける理由』発売。「SOMEDAY」から46年の軌跡に、ロングインタビューで迫る！",
+        "date": "2026-11-27",
+        "link": "https://web.kawade.co.jp/information/278894/",
+        "author": "kawade_editor",
+        "excerpt": "『佐野元春　歌い続ける理由』 著者：松尾潔 https://www.kawade.co.jp/np/isbn/97843"
+      },
+      {
         "title": "劇団☆新感線の座付き作家、アニメ・ドラマの人気脚本家・中島かずき、初の総特集ムック発売！",
         "date": "2026-11-26",
         "link": "https://web.kawade.co.jp/information/277578/",
@@ -193,18 +200,18 @@
         "excerpt": "舞台・アニメ・ドラマで活躍する人気脚本家 中島かずき、待望の特集ムック『文藝別冊 総特集 中島かずき――劇的に、奇想天外"
       },
       {
-        "title": "選考委員・町屋良平さん・村田沙耶香さん感嘆の【ZAZEN文学】爆誕！　山岡桜寿『つづけて生きてられません』ためし読み大量公開！（第63回文藝賞受賞作）",
-        "date": "2026-11-18",
-        "link": "https://web.kawade.co.jp/tameshiyomi/274163/",
-        "author": "kawade_editor",
-        "excerpt": "つづけて生きてられません 山岡桜寿　著 全国書店ほか、amazon、Rakutenブックスで発売中 https://ww"
-      },
-      {
         "title": "選考委員・小川哲さん、金原ひとみさんがガチ恋した！　劇薬系恋愛小説・唐川らい『いっしょに老衰しようね』大量ためし読みを一挙公開！（第63回文藝賞受賞作）",
         "date": "2026-11-18",
         "link": "https://web.kawade.co.jp/tameshiyomi/273992/",
         "author": "kawade_editor",
         "excerpt": "いっしょに老衰しようね 唐川らい　著 全国書店ほか、amazon、Rakutenブックスで発売中！ https://ww"
+      },
+      {
+        "title": "選考委員・町屋良平さん・村田沙耶香さん感嘆の【ZAZEN文学】爆誕！　山岡桜寿『つづけて生きてられません』ためし読み大量公開！（第63回文藝賞受賞作）",
+        "date": "2026-11-18",
+        "link": "https://web.kawade.co.jp/tameshiyomi/274163/",
+        "author": "kawade_editor",
+        "excerpt": "つづけて生きてられません 山岡桜寿　著 全国書店ほか、amazon、Rakutenブックスで発売中 https://ww"
       },
       {
         "title": "【10月、何読んだ？】注目フェア目白押し！　西村ツチカさんコラボ河出文庫ベスト・オブ・ベスト、綿矢りさ 作家デビュー25周年フェア、4社合同の短歌フェアほか",
@@ -247,13 +254,6 @@
         "link": "https://web.kawade.co.jp/tameshiyomi/273843/",
         "author": "kawade_editor",
         "excerpt": "海外文学の屋根裏部屋『チャイナタウンの女武者』 マキシーン・ホン・キングストン　藤本和子訳 amazon、Rakuten"
-      },
-      {
-        "title": "【発売即重版！】いしいしんじ、岡本真帆、hacchi……ジャンル横断アンソロジー『真夜中のほん　ねこ』著者陣のサイン入りポストカード3枚セットが当たるキャンペーン実施中♪",
-        "date": "2026-11-06",
-        "link": "https://web.kawade.co.jp/information/272532/",
-        "author": "kawade_editor",
-        "excerpt": "2026年10月22日に刊行した『真夜中のほん ねこ』。 豪華著者陣のラインナップ、なかでもゲーム実況者・hacchiさ"
       }
     ],
     "chikuma": [
